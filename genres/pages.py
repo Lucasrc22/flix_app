@@ -1,13 +1,14 @@
+import pandas as pd
 import streamlit as st
-import requests
+from st_aggrid import AgGrid
 
 genres = [
-    {"genre_id": 1, "name": "Action"},
-    {"genre_id": 2, "name": "Comedy"},
-    {"genre_id": 3, "name": "Drama"},
-    {"genre_id": 4, "name": "Fantasy"},
-    {"genre_id": 5, "name": "Horror"},
-    {"genre_id": 6, "name": "Mystery"},
+    {"id": 1, "name": "Ação"},
+    {"id": 2, "name": "Comédia"},
+    {"id": 3, "name": "Drama"},
+    {"id": 4, "name": "Fantasia"},
+    {"id": 5, "name": "Terror"},
+    {"id": 6, "name": "Mistério"},
 
 ]
 
@@ -15,8 +16,13 @@ genres = [
 def show_genres():
     st.write("Lista de Gêneros: ")
 
-    st.table(genres)
-    st.title('Cadastrar Gênero')
+    AgGrid(
+        data = pd.DataFrame(genres), #Resumidamente, é usado para criar um DataFrame a partir da lista de dicionários "genres", onde cada dicionário representa uma linha de dados. O DataFrame é uma estrutura de dados tabular que facilita a manipulação e visualização dos dados.
+        reload_data = True,
+        key = 'genres_grid',
+    )
+    
+    st.title('Cadastrar Novo Gênero')
     
     name = st.text_input("Digite o nome do gênero para buscar: ")
     if st.button("Cadastrar"):
