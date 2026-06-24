@@ -1,0 +1,7 @@
+# Flix App — Frontend Streamlit (consome a API Django REST Framework)
+# Instalação: pip install -r requirements.txt
+
+streamlit~=1.40          # Framework de UI
+streamlit-aggrid~=1.0    # Componente de tabela (import: st_aggrid)
+pandas~=2.2              # Manipulação tabular dos dados
+requests~=2.32           # Cliente HTTP para consumir a API DRF
