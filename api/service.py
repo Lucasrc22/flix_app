@@ -5,7 +5,7 @@ class Auth:
 
     def __init__(self):
         self.__base_url = 'http://127.0.0.1:8000/'
-        self.__auth_url = f'{self.__base_url}authentication/token/'
+        self.__auth_url = f'{self.__base_url}api/v1/authentication/token/'
 
     def get_token(self,username, password):
         auth_payload ={
@@ -16,6 +16,6 @@ class Auth:
             self.__auth_url,
             data= auth_payload
         )
-        if auth_payload.status_code == 200:
+        if auth_response.status_code == 200:
             return auth_response.json()
         return {'error': f'Erro ao autenticar, Status code: {auth_response.status_code}'}
