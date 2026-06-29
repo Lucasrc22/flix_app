@@ -13,4 +13,9 @@ def login(username, password):
     else:
         st.session_state.token = response.get('access') #armazenando variável token no streamlit, salvando o token na sessão
         st.rerun() #refresh na sessão
+
+def logout():
+    for key in st.session_state.key():
+        del st.session_state[key]
+    st.rerun()
     
