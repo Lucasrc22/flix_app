@@ -15,7 +15,7 @@ def login(username, password):
         st.rerun() #refresh na sessão
 
 def logout():
-    for key in st.session_state.key():
+    for key in list(st.session_state.keys()):
         del st.session_state[key]
     st.rerun()
     
